@@ -18,7 +18,7 @@ for col in numeric_columns:
 
 # Convert Year to numeric
 df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
-df.dropna(subset=['Year', 'Deaths', 'Population', 'Crude Rate'], inplace=True)
+df.dropna(subset=['Year', 'Deaths', 'Population', 'Crude Rate','Ethnicity'], inplace=True)
 
 st.set_page_config(page_title="USA Drowning Dashboard", layout="wide")
 st.title("📊 USA Drowning Dashboard")
@@ -68,10 +68,10 @@ ethnicity_group_crude['Crude Rate'] = (ethnicity_group_crude['Deaths'] / ethnici
 
 # Charts
 st.subheader("Ethnicity")
-#fig1 = px.bar(ethnicity_group_crude, x="Ethnicity", y="Crude Rate", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
+fig1 = px.bar(ethnicity_group_crude, x="Ethnicity", y="Deaths", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
 
 fig4 = px.line(
-    ethnicity_group_crude,
+    filtered_df,
     x='Year',
     y='Deaths',
     color='Ethnicity',
@@ -109,7 +109,7 @@ col3, col4, col5 = st.columns(3)
 with col3:
     st.plotly_chart(fig4, use_container_width=True)
 with col4:
-    st.plotly_chart(fig6, use_container_width=True)
+    st.plotly_chart(fig1, use_container_width=True)
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
     
