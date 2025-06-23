@@ -90,7 +90,7 @@ fig = px.choropleth(
     labels={'Total Deaths': 'Deaths'},
     title='Total Deaths by U.S. State',
     text='State Code',
-    hover_name='State',
+    hover_name='State'
 )
 
 # Display in Streamlit
