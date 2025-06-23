@@ -36,7 +36,7 @@ selected_age = st.sidebar.multiselect("Select Age Group", age_groups, default=li
 
 # Filtered data
 filtered_df = df[
-    (df['Year'].isnin(selected_year)) &
+    (df['Year'].isin(selected_year)) &
     (df['Sex'].isin(selected_sex)) &
     (df['Age Group'].isin(selected_age))
 ]
