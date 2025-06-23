@@ -66,6 +66,17 @@ fig5 = px.line(
     title='Crude Rate by Age Group'
 )
 
+deaths_by_year = (
+    filtered_df.groupby('Year').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
+)
+
+fig6 = px.line(
+    deaths_by_year,
+    x='Year',
+    y='Deaths',
+    markers=True,
+    title='Deaths by Year'
+)
 
 
 fig2 = px.bar(filtered_df, x="Age Group", y="Deaths", color="Sex", barmode="group",title='Drowning Deaths Demographics')
@@ -88,11 +99,13 @@ with col5:
 st.subheader("📊 Deaths")
 
 # Row 2: 2 more columns
-col7, col8 = st.columns(2)
+col7, col8, col9 = st.columns(2)
 with col7:
     st.plotly_chart(fig2, use_container_width=True)
 with col8:
     st.plotly_chart(fig3, use_container_width=True)
+with col9:
+    st.plotly_chart(fig6, use_container_width=True)
 
 st.markdown("""
 ---
