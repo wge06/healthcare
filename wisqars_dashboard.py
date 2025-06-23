@@ -89,17 +89,19 @@ time_df = df[
 ].groupby(['Year', 'Sex'])['Deaths'].sum().reset_index()
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex",title='Deaths Trends by Gender')
 
-# Row 1: 2 columns
-col4, col5, = st.columns(2)
+# Row 1: 3 columns
+col4, col5, col6 = st.columns(2)
 with col4:
     st.plotly_chart(fig1, use_container_width=True)
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
+with col6:
+    st.plotly_chart(fig2, use_container_width=True)
     
 st.subheader("📊 Deaths")
 
-# Row 2: 2 more columns
-col7, col8, col9 = st.columns(2)
+# Row 2: 3 more columns
+col7, col8, col9 = st.columns(3)
 with col7:
     st.plotly_chart(fig2, use_container_width=True)
 with col8:
