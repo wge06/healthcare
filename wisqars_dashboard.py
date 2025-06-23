@@ -85,12 +85,12 @@ with col4:
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
 
-# Row 2: 2 more columns
-col7, col8 = st.columns(2)
-with col7:
-    st.plotly_chart(fig2, use_container_width=True)
-with col8:
-    st.plotly_chart(fig3, use_container_width=True)
+# # Row 2: 2 more columns
+# col7, col8 = st.columns(2)
+# with col7:
+#     st.plotly_chart(fig2, use_container_width=True)
+# with col8:
+#     st.plotly_chart(fig3, use_container_width=True)
 
 st.markdown("""
 ---
