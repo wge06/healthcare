@@ -61,7 +61,7 @@ age_group_crude['Crude Rate'] = (age_group_crude['Deaths'] / age_group_crude['Po
 fig4 = px.line(
     age_group_crude,
     x='Age Group',
-    y='Crude Rate',
+    y='Deaths',
     markers=True,
     title='Crude Rate by Age Group'
 )
