@@ -7,7 +7,7 @@ st.set_page_config(page_title="Overview Page", layout="wide")
 
 # Load the cleaned data
 df = pd.read_csv("reports-data-export.csv")
-months_df = pd.read_csv("months.csv")
+months_df = pd.read_csv("month.csv")
 
 df_melted = months_df.melt(id_vars='Month', var_name='Year', value_name='Count')
 
