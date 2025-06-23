@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+st.set_page_config(page_title="Overview Page", layout="wide")
+
+
 # Load the cleaned data
 df = pd.read_csv("reports-data-export.csv")
 
