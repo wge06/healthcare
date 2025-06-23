@@ -10,6 +10,7 @@ numeric_columns = ['Deaths', 'Population', 'Crude Rate', 'Years of Potential Lif
 for col in numeric_columns:
     df[col] = df[col].replace('--', pd.NA)
     df[col] = df[col].str.replace(',', '', regex=False)
+    df[col] = df[col].str.replace('*', '', regex=False)
     df[col] = pd.to_numeric(df[col], errors='coerce')
 
 # Convert Year to numeric
@@ -44,7 +45,7 @@ crude_rate_metric = (filtered_df['Deaths'].sum() / filtered_df['Population'].sum
 # KPIs
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Deaths", f"{int(filtered_df['Deaths'].sum()):,}")
-col2.metric("Avg Crude Rate", f"{filtered_df['Crude Rate'].mean():.2f}")
+col2.metric("Avg Crude Rate", f"{crude_rate_metric.sum():.2f}")
 col3.metric("Total YPLL", f"{int(filtered_df['Years of Potential Life Lost'].sum()):,}")
 
 # Charts
