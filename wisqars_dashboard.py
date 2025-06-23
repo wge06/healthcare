@@ -58,6 +58,14 @@ age_group_crude = (
 )
 age_group_crude['Crude Rate'] = (age_group_crude['Deaths'] / age_group_crude['Population']) * 1e5
 
+fig4 = px.line(
+    age_group_crude,
+    x='Age Group',
+    y='Crude Rate',
+    markers=True,
+    title='Crude Rate by Age Group'
+)
+
 fig5 = px.line(
     age_group_crude,
     x='Age Group',
@@ -96,7 +104,7 @@ with col4:
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
 with col6:
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig4, use_container_width=True)
     
 st.subheader("📊 Deaths")
 
