@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.title("Ethnicities Dashboard")
+st.title("USA Drowning - Ethnicities Dashboard")
 
 
 # Load the cleaned data
@@ -104,16 +104,15 @@ time_df = df[
 ].groupby(['Year', 'Sex'])['Deaths'].sum().reset_index()
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex",title='Deaths Trends by Gender')
 
+
+st.plotly_chart(fig4, use_container_width=True)
+    
 # Row 1: 3 columns
-col3, col4, col5 = st.columns(3)
-with col3:
-    st.plotly_chart(fig4, use_container_width=True)
+col4, col5 = st.columns(2)
 with col4:
     st.plotly_chart(fig1, use_container_width=True)
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
-    
-
 st.markdown("""
 ℹ️ *Data Source: [CDC WISQARS](https://wisqars.cdc.gov/)*
 """)
