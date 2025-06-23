@@ -41,11 +41,11 @@ filtered_df = df[
     (df['Age Group'].isin(selected_age))
 ]
 # Crude rate metric variable as sum of deaths per 100,000 population which adjusted based on dashboard filters
-crude_rate_metric = (filtered_df['Deaths'].sum() / filtered_df['Population'].sum())*100,000
+crude_rate_metric = (filtered_df['Deaths'].sum() / filtered_df['Population'].sum())*100000
 # KPIs
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Deaths", f"{int(filtered_df['Deaths'].sum()):,}")
-col2.metric("Avg Crude Rate", f"{int(crude_rate_metric):.2f}")
+col2.metric("Avg Crude Rate", f"{crude_rate_metric:.2f}")
 col3.metric("Total YPLL", f"{int(filtered_df['Years of Potential Life Lost'].sum()):,}")
 
 # Charts
