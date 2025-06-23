@@ -137,7 +137,7 @@ time_df = df[
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex",title='Deaths Trends by Gender')
 
 # Row 1: 3 columns
-col4, col5, col6 = st.columns(3)
+col4, col5, col6 = st.columns(2)
 with col4:
     st.plotly_chart(fig7, use_container_width=True)
 with col5:
