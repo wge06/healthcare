@@ -61,20 +61,20 @@ col1.metric("Total Deaths", f"{int(filtered_df['Deaths'].sum()):,}")
 col2.metric("Avg Crude Rate", f"{crude_rate_metric:.2f}")
 col3.metric("Total YPLL", f"{int(filtered_df['Years of Potential Life Lost'].sum()):,}")
 
-# Charts
-st.subheader("Ethnicity")
-fig1 = px.bar(filtered_df, x="Ethnicity", y="Crude Rate", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
-
-
-age_group_crude = (
+ethnicity_group_crude = (
     filtered_df.groupby('Ethnicity').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
 )
-age_group_crude['Crude Rate'] = (age_group_crude['Deaths'] / age_group_crude['Population']) * 1e5
+ethnicity_group_crude['Crude Rate'] = (ethnicity_group_crude['Deaths'] / ethnicity_group_crude['Population']) * 1e5
+
+# Charts
+st.subheader("Ethnicity")
+fig1 = px.bar(ethnicity_group_crude, x="Ethnicity", y="Crude Rate", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
 
 fig4 = px.line(
-    age_group_crude,
-    x='Ethnicity',
+    ethnicity_group_crude,
+    x='Year',
     y='Deaths',
+    color='Ethnicity',
     markers=True,
     title='Crude Rate by Ethnicity'
 )
@@ -105,7 +105,9 @@ time_df = df[
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex",title='Deaths Trends by Gender')
 
 # Row 1: 3 columns
-col4, col5 = st.columns(2)
+col3, col4, col5 = st.columns(3)
+with col3:
+    st.plotly_chart(fig4, use_container_width=True)
 with col4:
     st.plotly_chart(fig1, use_container_width=True)
 with col5:
