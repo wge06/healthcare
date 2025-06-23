@@ -45,7 +45,7 @@ crude_rate_metric = (filtered_df['Deaths'].sum() / filtered_df['Population'].sum
 # KPIs
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Deaths", f"{int(filtered_df['Deaths'].sum()):,}")
-col2.metric("Avg Crude Rate", f"{crude_rate_metric}")
+col2.metric("Avg Crude Rate", f"{int(crude_rate_metric):.2f}")
 col3.metric("Total YPLL", f"{int(filtered_df['Years of Potential Life Lost'].sum()):,}")
 
 # Charts
