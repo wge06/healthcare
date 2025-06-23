@@ -79,18 +79,18 @@ state_abbrev = {
 }
 filtered_df['State Code'] = filtered_df['State'].map(state_abbrev)
 
-# Create choropleth map
 fig = px.choropleth(
-    filtered_df,
+    df,
     locations='State Code',
     locationmode='USA-states',
-    color='Deaths',
+    color='Total Deaths',
     scope='usa',
     color_continuous_scale='Reds',
     labels={'Total Deaths': 'Deaths'},
     title='Total Deaths by U.S. State',
-    text='State Code'
+    text='State Code'  # This adds the state abbreviation label
 )
+
 
 # Display in Streamlit
 st.plotly_chart(fig, use_container_width=True)
