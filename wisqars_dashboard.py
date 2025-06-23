@@ -79,6 +79,20 @@ time_df = df[
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex")
 st.plotly_chart(fig3, use_container_width=True)
 
+# Row 1: 2 columns
+col4, col5, = st.columns(2)
+with col4:
+    st.plotly_chart(fig1, use_container_width=True)
+with col5:
+    st.plotly_chart(fig5, use_container_width=True)
+
+# Row 2: 2 more columns
+col7, col8 = st.columns(2)
+with col7:
+    st.plotly_chart(fig2, use_container_width=True)
+with col8:
+    st.plotly_chart(fig3, use_container_width=True)
+
 st.markdown("""
 ---
 ℹ️ *Data Source: [CDC WISQARS](https://wisqars.cdc.gov/)*
