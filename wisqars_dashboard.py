@@ -51,7 +51,7 @@ col3.metric("Total YPLL", f"{int(filtered_df['Years of Potential Life Lost'].sum
 # Charts
 st.subheader("📈 Crude Rate by Age Group")
 fig1 = px.bar(filtered_df, x="Age Group", y="Crude Rate", color="Sex", barmode="group")
-st.plotly_chart(fig1, use_container_width=True)
+
 
 age_group_crude = (
     filtered_df.groupby('Age Group').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
@@ -65,11 +65,11 @@ fig5 = px.line(
     markers=True,
     title='Crude Rate by Age Group (Line Chart)'
 )
-st.plotly_chart(fig5, use_container_width=True)
+
 
 st.subheader("📊 Deaths by Age Group")
 fig2 = px.bar(filtered_df, x="Age Group", y="Deaths", color="Sex", barmode="group")
-st.plotly_chart(fig2, use_container_width=True)
+
 
 st.subheader("📉 Trend of Deaths Over Time")
 time_df = df[
@@ -77,7 +77,6 @@ time_df = df[
     (df['Age Group'].isin(selected_age))
 ].groupby(['Year', 'Sex'])['Deaths'].sum().reset_index()
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex")
-st.plotly_chart(fig3, use_container_width=True)
 
 # Row 1: 2 columns
 col4, col5, = st.columns(2)
