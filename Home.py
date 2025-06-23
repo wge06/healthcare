@@ -7,6 +7,10 @@ st.set_page_config(page_title="Overview Page", layout="wide")
 
 # Load the cleaned data
 df = pd.read_csv("reports-data-export.csv")
+months_df = pd.read_csv("months.csv")
+
+df_melted = months_df.melt(id_vars='Month', var_name='Year', value_name='Count')
+
 
 # Clean numeric columns
 numeric_columns = ['Deaths', 'Population', 'Crude Rate', 'Years of Potential Life Lost']
@@ -99,6 +103,27 @@ fig6 = px.line(
     title='Deaths by Year'
 )
 
+fig7 = px.line(
+    deaths_by_year,
+    x='Year',
+    y='Crude Rate',
+    markers=True,
+    title='Crude Rate by Year'
+)
+
+fig8 = px.line(
+    df_melted,
+    x='Month',
+    y='Count',
+    color='Year',
+    markers=True,
+    title='Drowning Seasonality by Month (2018–2023)',
+    labels={'Count': 'Number of Cases'}
+)
+fig8.update_layout(xaxis=dict(tickmode='array', tickvals=df['Month']))
+
+
+
 
 fig2 = px.bar(filtered_df, x="Age Group", y="Deaths", color="Sex", barmode="group",title='Drowning Deaths Demographics')
 
@@ -113,22 +138,18 @@ fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex",title='Deaths Trends b
 # Row 1: 3 columns
 col4, col5, col6 = st.columns(3)
 with col4:
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig7, use_container_width=True)
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
-with col6:
-    st.plotly_chart(fig4, use_container_width=True)
     
 st.subheader("📊 Deaths")
 
 # Row 2: 3 more columns
-col7, col8, col9 = st.columns(3)
-with col7:
-    st.plotly_chart(fig2, use_container_width=True)
-with col8:
-    st.plotly_chart(fig3, use_container_width=True)
-with col9:
+col6, col7 = st.columns(2)
+with col6:
     st.plotly_chart(fig6, use_container_width=True)
+with col7:
+    st.plotly_chart(fig8, use_container_width=True)
 
 st.markdown("""
 ---
