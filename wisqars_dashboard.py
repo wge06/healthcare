@@ -30,7 +30,7 @@ sexes = df['Sex'].dropna().unique()
 age_groups = df['Age Group'].dropna().unique()
 
 st.sidebar.header("🔎 Filters")
-selected_year = st.sidebar.selectbox("Select Year", years, index=len(years)-1)
+selected_year = st.sidebar.multiselect("Select Year", years, index=len(years)-1)
 selected_sex = st.sidebar.multiselect("Select Sex", sexes, default=list(sexes))
 selected_age = st.sidebar.multiselect("Select Age Group", age_groups, default=list(age_groups))
 
