@@ -78,14 +78,8 @@ fig4 = px.line(
     markers=True,
     title='Crude Rate by Ethnicity'
 )
+fig5 = px.bar(filtered_df, x="Age Group", y="Deaths", color="Ethnicity", barmode="group",title='Crude Rate by Ethnicity & Gender')
 
-fig5 = px.line(
-    age_group_crude,
-    x='Ethnicity',
-    y='Crude Rate',
-    markers=True,
-    title='Crude Rate by Ethnicity'
-)
 
 deaths_by_year = (
     filtered_df.groupby('Year').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
@@ -111,13 +105,11 @@ time_df = df[
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex",title='Deaths Trends by Gender')
 
 # Row 1: 3 columns
-col4, col5, col6 = st.columns(3)
+col4, col5 = st.columns(2)
 with col4:
     st.plotly_chart(fig1, use_container_width=True)
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
-with col6:
-    st.plotly_chart(fig4, use_container_width=True)
     
 
 st.markdown("""
