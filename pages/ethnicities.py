@@ -2,6 +2,16 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Overview", "Ethnicity"])
+
+if page == "Overview":
+    st.title("Overview")
+    # Your content here
+elif page == "Ethnicity":
+    st.title("Ethnicities")
+    # Your content here
+
 # Load the cleaned data
 df = pd.read_csv("ethnicity.csv")
 
