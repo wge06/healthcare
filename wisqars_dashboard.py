@@ -67,6 +67,54 @@ fig5 = px.line(
 )
 st.plotly_chart(fig5, use_container_width=True)
 
+
+import plotly.graph_objects as go
+
+#Create the figure
+fig_combo = go.Figure()
+
+# Bar trace: Total deaths
+fig_combo.add_trace(go.Bar(
+    x=age_group_crude['Age Group'],
+    y=age_group_crude['Deaths'],
+    name='Total Deaths',
+    marker_color='rgba(55, 83, 109, 0.7)',
+    yaxis='y1'
+))
+
+# Line trace: Crude rate
+fig_combo.add_trace(go.Scatter(
+    x=age_group_crude['Age Group'],
+    y=age_group_crude['Crude Rate'],
+    name='Crude Rate per 100,000',
+    mode='lines+markers',
+    line=dict(color='firebrick', width=3),
+    yaxis='y2'
+))
+
+# Step 3: Customize layout
+fig_combo.update_layout(
+    title="Crude Rate and Total Deaths by Age Group",
+    xaxis=dict(title="Age Group"),
+    yaxis=dict(
+        title="Total Deaths",
+        titlefont=dict(color="rgba(55, 83, 109, 1)"),
+        tickfont=dict(color="rgba(55, 83, 109, 1)")
+    ),
+    yaxis2=dict(
+        title="Crude Rate (per 100,000)",
+        titlefont=dict(color="firebrick"),
+        tickfont=dict(color="firebrick"),
+        overlaying='y',
+        side='right'
+    ),
+    legend=dict(x=0.01, y=0.99),
+    barmode='group'
+)
+
+# Step 4: Show the chart in Streamlit
+st.plotly_chart(fig_combo, use_container_width=True)
+
 st.subheader("📊 Deaths by Age Group")
 fig2 = px.bar(filtered_df, x="Age Group", y="Deaths", color="Sex", barmode="group")
 st.plotly_chart(fig2, use_container_width=True)
