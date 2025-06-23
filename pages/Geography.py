@@ -87,8 +87,7 @@ fig = px.choropleth(
     scope='usa',
     color_continuous_scale='Reds',
     labels={'Total Deaths': 'Deaths'},
-    title='Total Deaths by U.S. State',
-    text='State Code'  # This adds the state abbreviation label
+    title='Total Deaths by U.S. State'
 )
 
 
