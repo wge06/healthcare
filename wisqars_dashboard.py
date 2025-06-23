@@ -53,8 +53,13 @@ st.subheader("📈 Crude Rate by Age Group")
 fig1 = px.bar(filtered_df, x="Age Group", y="Crude Rate", color="Sex", barmode="group")
 st.plotly_chart(fig1, use_container_width=True)
 
+age_group_crude = (
+    filtered_df.groupby('Age Group').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
+)
+age_group_crude['Crude Rate'] = (age_group_crude['Deaths'] / age_group_crude['Population']) * 1e5
+
 fig5 = px.line(
-    crude_rate_metric,
+    age_group_crude,
     x='Age Group',
     y='Crude Rate',
     markers=True,
