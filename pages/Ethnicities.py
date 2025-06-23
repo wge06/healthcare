@@ -71,7 +71,7 @@ st.subheader("Ethnicity")
 fig1 = px.bar(filtered_df, x="Ethnicity", y="Deaths", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
 
 deaths_by_year = (
-    filtered_df.groupby('Year','Ethnicity').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
+    filtered_df.groupby(['Year','Ethnicity']).agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
 )
 
 fig4 = px.line(
