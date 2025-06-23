@@ -88,8 +88,7 @@ fig = px.choropleth(
     color_continuous_scale='Reds',
     labels={'Deaths': 'Deaths'},
     title='Total Deaths by U.S. State',
-    text='State Code',
-    hover_name='State'
+    text='State Code'
 )
 
 
