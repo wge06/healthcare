@@ -80,7 +80,7 @@ state_abbrev = {
 filtered_df['State Code'] = filtered_df['State'].map(state_abbrev)
 
 fig = px.choropleth(
-    df,
+    filtered_df,
     locations='State Code',
     locationmode='USA-states',
     color='Total Deaths',
