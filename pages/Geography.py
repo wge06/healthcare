@@ -83,10 +83,10 @@ fig = px.choropleth(
     filtered_df,
     locations='State Code',
     locationmode='USA-states',
-    color='Total Deaths',
+    color='Deaths',
     scope='usa',
     color_continuous_scale='Reds',
-    labels={'Total Deaths': 'Deaths'},
+    labels={'Deaths': 'Deaths'},
     title='Total Deaths by U.S. State'
 )
 
