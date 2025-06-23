@@ -94,7 +94,7 @@ fig_combo.add_trace(go.Scatter(
 
 # Step 3: Customize layout
 fig_combo.update_layout(
-    title="Crude Rate and Total Deaths by Age Group",
+    title=dict(text="Crude Rate and Total Deaths by Age Group"),
     xaxis=dict(title="Age Group"),
     yaxis=dict(
         title="Total Deaths",
@@ -102,11 +102,11 @@ fig_combo.update_layout(
         tickfont=dict(color="rgba(55, 83, 109, 1)")
     ),
     yaxis2=dict(
-        title="Crude Rate (per 100,000)",
-        titlefont=dict(color="firebrick"),
-        tickfont=dict(color="firebrick"),
-        overlaying='y',
-        side='right'
+    title="Crude Rate (per 100,000)",
+    titlefont=dict(color="firebrick"),
+    tickfont=dict(color="firebrick"),
+    overlaying='y',
+    side='right'
     ),
     legend=dict(x=0.01, y=0.99),
     barmode='group'
