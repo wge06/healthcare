@@ -62,7 +62,7 @@ col2.metric("Avg Crude Rate", f"{crude_rate_metric:.2f}")
 col3.metric("Total YPLL", f"{int(filtered_df['Years of Potential Life Lost'].sum()):,}")
 
 # Charts
-st.subheader("📈 Crude Rate")
+st.subheader("📈 Age")
 fig1 = px.bar(filtered_df, x="Age Group", y="Crude Rate", color="Sex", barmode="group",title='Crude Rate by Age Group & Gender')
 
 
@@ -120,15 +120,13 @@ time_df = df[
 fig3 = px.line(time_df, x="Year", y="Deaths", color="Sex",title='Deaths Trends by Gender')
 
 # Row 1: 3 columns
-col4, col5, col6 = st.columns(3)
+col4, col5 = st.columns(2)
 with col4:
     st.plotly_chart(fig1, use_container_width=True)
 with col5:
     st.plotly_chart(fig5, use_container_width=True)
-with col6:
-    st.plotly_chart(fig4, use_container_width=True)
     
-st.subheader("📊 Deaths")
+st.subheader("📊 Gender")
 
 # Row 2: 3 more columns
 col6, col7 = st.columns(2)
