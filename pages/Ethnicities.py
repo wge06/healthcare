@@ -70,20 +70,22 @@ ethnicity_group_crude['Crude Rate'] = (ethnicity_group_crude['Deaths'] / ethnici
 st.subheader("Ethnicity")
 fig1 = px.bar(filtered_df, x="Ethnicity", y="Deaths", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
 
+deaths_by_year = (
+    filtered_df.groupby('Year','Ethnicity').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
+)
+
 fig4 = px.line(
     filtered_df,
     x='Year',
     y='Deaths',
     color='Ethnicity',
     markers=True,
-    title='Crude Rate by Ethnicity'
+    title='Deaths by Ethnicity'
 )
 fig5 = px.bar(filtered_df, x="Age Group", y="Deaths", color="Ethnicity", barmode="group",title='Crude Rate by Ethnicity & Gender')
 
 
-deaths_by_year = (
-    filtered_df.groupby('Year').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
-)
+
 
 fig6 = px.line(
     deaths_by_year,
