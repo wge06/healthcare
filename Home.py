@@ -96,7 +96,6 @@ deaths_by_year = (
 )
 deaths_by_year['Crude Rate'] = (deaths_by_year['Deaths'] / deaths_by_year['Population']) * 1e5
 
-
 fig6 = px.line(
     deaths_by_year,
     x='Year',
