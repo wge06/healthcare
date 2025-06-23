@@ -68,7 +68,7 @@ ethnicity_group_crude['Crude Rate'] = (ethnicity_group_crude['Deaths'] / ethnici
 
 # Charts
 st.subheader("Ethnicity")
-fig1 = px.bar(ethnicity_group_crude, x="Ethnicity", y="Deaths", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
+fig1 = px.bar(filtered_df, x="Ethnicity", y="Deaths", color="Sex", barmode="group",title='Crude Rate by Ethnicity & Gender')
 
 fig4 = px.line(
     filtered_df,
