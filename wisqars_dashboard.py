@@ -53,6 +53,15 @@ st.subheader("📈 Crude Rate by Age Group")
 fig1 = px.bar(filtered_df, x="Age Group", y="Crude Rate", color="Sex", barmode="group")
 st.plotly_chart(fig1, use_container_width=True)
 
+fig5 = px.line(
+    crude_rate_metric,
+    x='Age Group',
+    y='Crude Rate',
+    markers=True,
+    title='Crude Rate by Age Group (Line Chart)'
+)
+st.plotly_chart(fig5, use_container_width=True)
+
 st.subheader("📊 Deaths by Age Group")
 fig2 = px.bar(filtered_df, x="Age Group", y="Deaths", color="Sex", barmode="group")
 st.plotly_chart(fig2, use_container_width=True)
