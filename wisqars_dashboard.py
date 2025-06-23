@@ -35,13 +35,14 @@ st.sidebar.header("🔎 Filters")
 #     options=years,
 #     default=years  # This selects all years by default
 # )
-selected_sex = st.sidebar.multiselect("Select Sex", sexes, default=list(sexes))
-selected_age = st.sidebar.multiselect("Select Age Group", age_groups, default=list(age_groups))
+
 select_all_years = st.sidebar.checkbox("Select All Years", value=True)
 if select_all_years:
     selected_years = st.sidebar.multiselect("Select Year(s)", years, default=years)
 else:
     selected_years = st.sidebar.multiselect("Select Year(s)", years)
+selected_sex = st.sidebar.multiselect("Select Sex", sexes, default=list(sexes))
+selected_age = st.sidebar.multiselect("Select Age Group", age_groups, default=list(age_groups))
 # Filtered data
 filtered_df = df[
     (df['Year'].isin(selected_years)) &
