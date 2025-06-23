@@ -90,6 +90,7 @@ fig5 = px.line(
 deaths_by_year = (
     filtered_df.groupby('Year').agg({'Deaths': 'sum', 'Population': 'sum'}).reset_index()
 )
+deaths_by_year['Crude Rate'] = (deaths_by_year['Deaths'] / deaths_by_year['Population']) * 1e5
 
 fig6 = px.line(
     deaths_by_year,
