@@ -121,7 +121,7 @@ fig8 = px.line(
     title='Drowning Seasonality by Month (2018–2023)',
     labels={'Count': 'Number of Cases'}
 )
-fig8.update_layout(xaxis=dict(tickmode='array', tickvals=df['Month']))
+fig8.update_layout(xaxis=dict(tickmode='array', tickvals=df_melted['Month']))
 
 
 
